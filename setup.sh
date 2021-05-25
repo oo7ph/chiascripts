@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# V0.04
+# V0.05
 
 #####################################
 # Install chia stuff
@@ -32,7 +32,7 @@ setupChia (){
 #####################################
 setupChron (){
 	local chronFile="/hive/etc/crontab.root"
-	local croncmd="@reboot rm /mnt/TMP-0000/*; su -c \"screen -dmS chia bash -c '. /usr/lib/chia-blockchain/activate; plotman interactive; exec bash'\""
+	local croncmd="@reboot rm /mnt/TMP-0000/*; su -c \"screen -dmS chia bash -c '. /usr/lib/chia-blockchain/activate; chia start harvester; plotman interactive; exec bash'\""
 
 	grep -qxF "$croncmd" "$chronFile" || echo "$croncmd" >> "$chronFile"
 }
