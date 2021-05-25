@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# V0.03
+# V0.04
 
 #####################################
 # Install chia stuff
@@ -106,6 +106,14 @@ archiveSetup(){
 	sudo ssh-copy-id -i ~/.ssh/id_rsa.pub chia@HD-0000.local
 }
 
+dashboardSetup() {
+	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+	export NVM_DIR="/root/.nvm"
+	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+	nvm install v12
+	npm i -g chia-dashboard-satellite
+}
+
 read -p "Setup ENV?" -n 1 -r
 echo    # (optional) move to a new line
 if [[ $REPLY =~ ^[Yy]$ ]]
@@ -145,6 +153,13 @@ echo    # (optional) move to a new line
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
    setupChron
+fi
+
+read -p "Setup Dashboard?" -n 1 -r
+echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+   dashboardSetup
 fi
 
 # envSetup
