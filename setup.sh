@@ -148,7 +148,7 @@ then
 	sed "s|<TEMP DIRS>|$formattedTmpDriveList|" "/root/setup/plotman_template.yaml" > "$plotmanConfig"
 	formattedStorageDriveList=$(setupStorage)
 	sed -i "s|<DIST DIRS>|$formattedStorageDriveList|" "$plotmanConfig"
-	sed -i 's/|END|/\n/g' "$plotmanConfig"
+	# sed -i 's/|END|/\n/g' "$plotmanConfig"
 fi
 read -p "Setup Chron?" -n 1 -r
 echo    # (optional) move to a new line
