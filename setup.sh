@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# V0.07
+# V0.08
 
 #####################################
 # Install chia stuff
@@ -74,7 +74,7 @@ setupStorage (){
 		# remove drives matching uuid
 		sed -i -e "/$uuid/d" "$driveFile"
 		echo "$driveCmd" >> "$driveFile"
-		formattedStorageDirs="$formattedStorageDirs                - $drivePath"
+		formattedStorageDirs="$formattedStorageDirs                - $drivePath\n"
 		mkdir -p "$drivePath"
 	    let "driveNo+=1"
 	done
