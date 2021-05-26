@@ -78,7 +78,7 @@ setupStorage (){
 		mkdir -p "$drivePath"
 	    let "driveNo+=1"
 	done
-	printf "$formattedStorageDirs" | sed 's/\\n/\\\\n/g'
+	printf "$formattedStorageDirs"
 }
 
 pathSetup(){
