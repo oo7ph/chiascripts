@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# V0.05
+# V0.06
 
 #####################################
 # Install chia stuff
@@ -42,7 +42,7 @@ setupChron (){
 #####################################
 setupTmpDrives () {
 	local driveNo=0
-	local drives=($(blkid | grep nvme | sed -n 's/.* UUID=\"\([^\"]*\)\".*/\1/p';))
+	local drives=$(blkid | grep nvme | sed -n 's/.* UUID=\"\([^\"]*\)\".*/\1/p')
 	local driveFile="/etc/fstab"
 	local formattedTmpDirs=""
 
@@ -62,7 +62,7 @@ setupTmpDrives () {
 
 setupStorage (){
 	local driveNo=0
-	local drives=($(blkid | grep Elements | sed -n 's/.* UUID=\"\([^\"]*\)\".*/\1/p';))
+	local drives=$(blkid | grep Elements | sed -n 's/.* UUID=\"\([^\"]*\)\".*/\1/p')
 	local driveFile="/etc/fstab"
 	local formattedStorageDirs=""
 
