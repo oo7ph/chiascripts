@@ -75,7 +75,7 @@ setupStorage (){
 		sed -i -e "/$uuid/d" "$driveFile"
 		echo "$driveCmd" >> "$driveFile"
 		formattedStorageDirs="$formattedStorageDirs                - $drivePath"
-		mkdir "$drivePath"
+		mkdir -p "$drivePath"
 	    let "driveNo+=1"
 	done
 	echo "$formattedStorageDirs" | sed 's/\\n/\\\\n/g'
