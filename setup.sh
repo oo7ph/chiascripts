@@ -54,7 +54,7 @@ setupTmpDrives () {
 		# remove drives matching uuid
 		sed -i -e "/$uuid/d" "$driveFile"
 		echo "$driveCmd" >> "$driveFile"
-		formattedTmpDirs="$formattedTmpDirs                - $drivePath"
+		formattedTmpDirs="$formattedTmpDirs                - $drivePath@END@"
 	    let "driveNo+=1"
 	done
 	echo "$formattedTmpDirs" | sed 's/\\n/\\\\n/g'
@@ -74,7 +74,7 @@ setupStorage (){
 		# remove drives matching uuid
 		sed -i -e "/$uuid/d" "$driveFile"
 		echo "$driveCmd" >> "$driveFile"
-		formattedStorageDirs="$formattedStorageDirs                - $drivePath"
+		formattedStorageDirs="$formattedStorageDirs                - $drivePath@END@"
 		mkdir -p "$drivePath"
 	    let "driveNo+=1"
 	done
@@ -148,6 +148,7 @@ then
 	sed "s|<TEMP DIRS>|$formattedTmpDriveList|" "/root/setup/plotman_template.yaml" > "$plotmanConfig"
 	formattedStorageDriveList=$(setupStorage)
 	sed -i "s|<DIST DIRS>|$formattedStorageDriveList|" "$plotmanConfig"
+	sed -i 's/@END@/\n/g' "$plotmanConfig"
 fi
 read -p "Setup Chron?" -n 1 -r
 echo    # (optional) move to a new line
