@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# V0.06
+# V0.07
 
 #####################################
 # Install chia stuff
@@ -75,6 +75,7 @@ setupStorage (){
 		sed -i -e "/$uuid/d" "$driveFile"
 		echo "$driveCmd" >> "$driveFile"
 		formattedStorageDirs="$formattedStorageDirs                - $drivePath"
+		mkdir "$drivePath"
 	    let "driveNo+=1"
 	done
 	echo "$formattedStorageDirs" | sed 's/\\n/\\\\n/g'
